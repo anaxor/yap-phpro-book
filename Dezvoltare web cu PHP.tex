@@ -1,13 +1,17 @@
 \documentclass[a4paper,11pt,oneside]{book}
 \usepackage{times}
 \usepackage[usenames,dvipsnames]{color}
-\usepackage{alltt}
-\usepackage{keystroke}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[romanian]{babel}
+
+\usepackage{alltt}
+\usepackage{keystroke}
+
 \usepackage{multind}
-%\makeindex{en-ro}
+\makeindex{en-terms}
+\makeindex{concepts}
+
 \usepackage[left=2cm,top=3cm,right=1.5cm,bottom=2cm]{geometry}
 
 \usepackage{fancyhdr}
@@ -39,22 +43,10 @@
 
 %fancy chars
 \usepackage{dingbat}
-% \lstset{language=php,
-% 	numbers=left,
-% 	stepnumber=1,
-% 	showspaces=false,
-% 	showtabs=false,
-% 	frame=single,
-% 	showstringspaces=false,
-% 	tabsize=2,
-% 	basicstyle=\ttfamily,
-% 	keywordstyle=\color{red},
-% 	stringstyle=\color{OliveGreen},
-% 	identifierstyle=\color{Blue}
-% }
-
 \usepackage{courier}
- \lstdefinelanguage{pseudocod}{%
+
+%%%%%%%%%%%%%%%%%%%%%%%% listings
+\lstdefinelanguage{pseudocod}{%
 keywords={daca,atunci,altfel,start,sfarsit,citeste,afiseaza},%
 basicstyle=\ttfamily,%
 keywordstyle=\bfseries,%
@@ -84,7 +76,7 @@ extendedchars}[keywords]
  
 
 
-\setlength\marginparwidth{1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% pdf tweaks
 \hypersetup{
 %    bookmarks=true,         % show bookmarks bar?
     unicode=true,          % non-Latin characters in Acrobat’s bookmarks
@@ -107,6 +99,8 @@ extendedchars}[keywords]
 	linkbordercolor={1 0 0}
 }
 
+\setlength\marginparwidth{1cm}
+
 \renewcommand{\chaptermark}[1]{\markright{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
 
@@ -115,6 +109,7 @@ extendedchars}[keywords]
 %\fancyfoot[CO,C] {}
 \titleformat{\section}{\huge}{}{0em}{}
 
+%%%%%%%%%%%%%%%%%%%%%% Typesetting the exercise environment
 \renewcommand{\ExerciseName}{Exerciţiu}
 \renewcommand{\ExePartName}{{\goodbreak}Partea}
 \renewcommand{\ExerciseHeader}{\needspace{5\baselineskip} \vskip .5em\hrule\vskip 1em\centerline{\textbf{\large\smallpencil
@@ -122,16 +117,19 @@ extendedchars}[keywords]
 \ExerciseHeaderDifficulty\ExerciseHeaderOrigin\medskip}}}
 \makeatletter\def\endExerciseEnv{\termineliste{1}\@EndExeBox\nobreak\vskip .5em\hrule\vskip 1em\needspace{-10\baselineskip}}\makeatother
 
+%%%%%%%%%%%%%%%%%%%%%% custom environments
 \newcommand{\attention}[1]{\vskip 1em\begin{Large}\leftpointright\end{Large}\parbox{15.9cm}{#1} \vskip 1em}
 \newcommand{\good}[1]{\vskip 1em\begin{Large}\leftthumbsup\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
 \newcommand{\bad}[1]{\vskip 1em\begin{Large}\leftthumbsdown\end{Large}\parbox{15.9cm}{#1}\vskip 1em}
 
-\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-ro}{#2}}
+\newcommand{\engl}[2]{#1 (en. \textsl{#2})\index{en-terms}{#2}}
+\newcommand{\concept}[2]{#1\index{concepts}{#2}}
 
+%%%%%%%%%%%%%%%%%%%%%% custom shortcuts
 \def \phpro{\href{https://github.com/OriginalCopy/yap-phpro-book/wiki}{phpro}}
 \def \get{{\texttt{\$\_GET}\kern3pt}}
 
-%%numbering segments in verbatim
+%%%%%%%%%%%%%%%%%%%%%% numbering segments in verbatim
 \makeatletter
 \newcommand{\nl}[1]{\hbox to\z@{%
     \hss (#1) \kern3pt}}
@@ -141,10 +139,18 @@ extendedchars}[keywords]
 \begin{document}
 \pagestyle{empty}
 
-\include{titlepage}
+%\include{titlepage}
+\input{titlepage}
 \include{copyrightpage}
 
 %\setcounter{page}{-1}
+
+
+%\fancypagestyle{plain}
+%{
+%    \fancyhead{}
+%    \fancyfoot{}
+%}	% clear header and footer of plain page because of ToC
 \addtocontents{toc}{\protect\pagestyle{empty}}
 \tableofcontents
 \label{cuprins}
@@ -152,7 +158,7 @@ extendedchars}[keywords]
 %introducere, ce, cine, cui, de ce
 \fancyhead[RO,R]{}
 
-\pagestyle{fancy}
+%\pagestyle{fancy}
 
 %intro
 \include{cap00/index}
@@ -184,7 +190,10 @@ extendedchars}[keywords]
 %\include{cap07/index}
 
 %TODO better indexes
-%\printindex{en-ro}{Indexul expresiilor En-Ro}
-%\listofexercises
+
+%
+
+
+\include{indexes}
 
 \end{document}
