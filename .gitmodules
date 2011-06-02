@@ -22,3 +22,6 @@
 [submodule "solutii/starlays"]
 	path = solutii/starlays
 	url = git://gist.github.com/980282.git
+[submodule "solutii/raul21"]
+	path = solutii/raul21
+	url = git://gist.github.com/1003026.git
