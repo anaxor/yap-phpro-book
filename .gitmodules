@@ -31,3 +31,6 @@
 [submodule "solutii/Ctek"]
 	path = solutii/Ctek
 	url = git@gist.github.com:94a42c22d432d1d65412.git
+[submodule "solutii/acua"]
+	path = solutii/acua
+	url = git://gist.github.com/1035578.git
