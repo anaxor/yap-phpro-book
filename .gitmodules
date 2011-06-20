@@ -28,9 +28,6 @@
 [submodule "solutii/ValsiS"]
 	path = solutii/ValsiS
 	url = git@gist.github.com:1297b739e62a59714d4e.git
-[submodule "solutii/Ctek"]
-	path = solutii/Ctek
-	url = git@gist.github.com:527505e7d4ebff220422.git
 [submodule "solutii/acua"]
 	path = solutii/acua
 	url = git://gist.github.com/1035578.git
