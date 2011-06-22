@@ -220,8 +220,86 @@ Rezervă-ţi 40-80 de ore de lucru pentru a învăţa să faci operaţii CRUD.
 %TODO lifecycle of a mysql connection in the PHP runtime
 
 \section{Designul bazelor de date}
+Pentru a-ţi uşura munca atunci când creezi baze de date, poţi folosi o interfaţă grafică
+pentru a interacţiona cu serverul. O astfel de aplicaţie este phpMyAdmin.
+Aceasta este o aplicaţie web scrisă în PHP.
+Urmează paşii
+din documentaţia sa oficială pentru a o instala.
 
-%TODO instalează phpMyAdmin
+Înainte de a te apuca de creat baze de date, trebuie să te gândeşti puţin
+la structura informaţiilor pe care urmează să le salvezi în baza de date.
+Ţin să subliniez: a informaţiilor, care nu înseamnă neapărat a bazei de date.
+
+Să zicem că lucrăm la o aplicaţie pentru administrarea unei firme. Primul
+lucru de care avem nevoie sunt angajaţi. Aceşti angajaţi sunt oameni, deci
+au un nume, o zi de naştere, o adresă şi un număr de telefon.
+
+Ca şi concept, cam acestea sunt datele, însă trebuie să ne gândim şi la cum
+vom dori să lucrăm cu aceste date.
+
+Să zicem că firma noastră pune la dispoziţie un mijloc de transport pentru
+a-i aduce pe angajaţii săi la lucru. Teoretic avem adresa, însă va fi dificil
+să extragem informaţiile din ea: avem nevoie de stradă şi număr. În funcţie de
+ele putem calcula apoi care sunt cele mai bune puncte de întâlnire, deoarece
+evident acest mijloc de transport nu va putea trece pe la fiecare acasă, dacă
+acea adresă nu este în drum.
+
+Concluzia logică e că ceea ce am numit "adresă" trebuie împărţit în două câmpuri:
+stradă şi număr. Acest fapt ne duce la \textsl{principiul atomicităţii}
+%TODO point to Codd
+datelor: fiecare
+câmp trebuie să conţină o singură informaţie indivizibilă. Acelaşi principiu îl
+putem aplica şi numelui şi numărului de telefon.
+
+În exemplul nostru de mai sus, aceste coloane reprezintă \textsl{domenii}. După
+cum observi, fiecare domeniu are un anumit tip de date, mai ales acum că am
+respectat principiul atomicităţii: strada este un string, iar numărul este un
+număr. Ba mai mult, este un număr pozitiv.
+
+Este important să stabilim domeniile şi tipul lor de date. Dacă este vorba despre
+un domeniu pentru numere, trebuie să stabilim exact intervalul de numere. Dacă
+este vorba despre un string, atunci trebuie să stabilim lungimea maximă, ş.a.m.d.
+În acest fel, chiar dacă un domeniu apare în diferite tabele, toate informaţiile
+din baza de date vor fi consistente.
+
+Un alt principiu este cel al evitării redundanţei. Redundanţa datelor nu este
+bună. Ce se întâmplă dacă primăria oraşului decide să redenumească o stradă?
+Va trebui să redenumim toate rândurile din tabelul nostru cu angajaţi care
+conţin acea stradă. În acest caz, redundanţa putea fi evitată uşor dacă
+cream un nou tabel "străzi" în care puneam toate numele de străzi unice.
+
+Tabelul cu angajaţi nu mai conţine deci numele străzilor, care acum se află
+în acest nou tabel. Dar cum facem legătura între un angajat şi strada pe care
+locuieşte? Pentru acest lucru avem la dispoziţie două arme: \textsl{foreign key}
+şi \textsl{primary key}.
+
+Aceste \textit{keys} sunt numere întregi. Tabelul cu străzi ar trebui să aibe
+un PK unic numelui de stradă aferent. Teoretic, am putea folosi direct
+numele străzii, este un PK la fel de valid, deoarece acest nume este oricum unic --
+nu există două străzi cu acelaşi nume. Însă practic, calculatoarele lucrează
+mai uşor cu numere, care întâmplător ocupă şi mai puţin spaţiu, deci baza de date
+ar deveni mai compactă. Iar deoarece calculatoarele lucrează mai rapid cu numere,
+şi cererile ar deveni mai rapide.
+
+Deci adăugăm o nouă coloană tabelului străzi numit \texttt{ID}, pe care îl facem
+PK, şi pentru a fi unic, îl facem şi \texttt{AUTO\_INCREMENT}.
+
+Acum că străzile au un PK, putem reveni la tabelul cu angajaţi şi pune acolo
+în coloana "stradă" PK-ul străzii aferente din tabelul "străzi". Spunem că
+această coloană este un FK, şi că referenţiem datele dintr-un alt tabel.
+
+Însă bazele de date relaţionale ştiu şi mai multe. Misiunea unei baze de date
+nu este numai de a salva, ordona, căuta sau grupa informaţii, ci şi de a ne
+garanta integritatea datelor. Ce se întâmplă dacă ştergem din greşeală (sau nu)
+o stradă pe care încă locuieşte un angajat? FK-ul acelui angajat va deveni
+invalid. Cu baze de date putem asigura această integritate prin ceea ce numim
+\textsl{referential integrity}.
+
+În MySQL, atunci când creezi tabelul care va trebui să ştie despre integritate
+referenţială, va trebui să-i setezi ca \textsl{ENGINE} \textsl{InnoDB}.
+
+%TODO domeniu, tip de date
+
 
 \subsection{1st NS}
 %TODO write me
@@ -242,13 +320,6 @@ Rezervă-ţi 40-80 de ore de lucru pentru a învăţa să faci operaţii CRUD.
 % 
 % http://en.wikipedia.org/wiki/Database_normalization - şi articolele despre
 % 1NF, 2NF şi 3NF - doar atât e suficient pentru orice programator
-% 
-% http://dev.mysql.com/doc/refman/5.6/en/tutorial.html - e suficient
-% pentru un început
-% 
-% după ce ai învăţat să foloseşti clientul mysql pentru a te conecta la daemonul
-% mysqld, poţi instala şi phpmyadmin şi îl folosi pe el pentru a interacţiona
-% cu serverul: http://www.phpmyadmin.net/home_page/index.php
 % 
 
 \section{Debugging and profiling}

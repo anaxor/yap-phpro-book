@@ -37,3 +37,6 @@
 [submodule "solutii/Georgeis"]
 	path = solutii/Georgeis
 	url = git@gist.github.com:0137196cc4747407800c.git
+[submodule "solutii/florinfratica"]
+	path = solutii/florinfratica
+	url = git://gist.github.com/1039933.git
