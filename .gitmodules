@@ -34,3 +34,6 @@
 [submodule "solutii/Ctek"]
 	path = solutii/Ctek
 	url = git@gist.github.com:527505e7d4ebff220422.git
+[submodule "solutii/Georgeis"]
+	path = solutii/Georgeis
+	url = git@gist.github.com:0137196cc4747407800c.git
