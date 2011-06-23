@@ -40,3 +40,6 @@
 [submodule "solutii/florinfratica"]
 	path = solutii/florinfratica
 	url = git://gist.github.com/1039933.git
+[submodule "solutii/razu_"]
+	path = solutii/razu_
+	url = git@gist.github.com:d3a5372fb7a2156799d2.git
