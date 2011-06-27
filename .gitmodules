@@ -46,3 +46,6 @@
 [submodule "solutii/SebastianSG"]
 	path = solutii/SebastianSG
 	url = git://gist.github.com/1046842.git
+[submodule "solutii/Azrael91"]
+	path = solutii/Azrael91
+	url = git@gist.github.com:b23653c96fd472b39289.git
