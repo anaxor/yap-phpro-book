@@ -49,3 +49,6 @@
 [submodule "solutii/Azrael91"]
 	path = solutii/Azrael91
 	url = git@gist.github.com:b23653c96fd472b39289.git
+[submodule "solutii/Shumi"]
+	path = solutii/Shumi
+	url = git@gist.github.com:2fe53286f08a4c21e67d.git
