@@ -6,6 +6,8 @@ carte ce are ca scop predarea corectă a noţiunilor fundamentale de
 algoritmică şi a noţiunilor necesare de programare PHP pentru dezvoltarea
 de aplicaţii sigure şi flexibile în cadrul unei echipe de programare.
 
+Cursul te ia de la zero în domeniul programării.
+
 Cartea în sinea sa este aproape inutilă fără sprijinul comunităţii. Noi nu
 oferim doar o simplă carte, ci un program *gratuit* de tutelare care
 s-a dovedit eficient de-a lungul timpului.
@@ -16,3 +18,5 @@ intră în legătură cu noi pe [IRC](https://github.com/OriginalCopy/yap-phpro-
 Există nenumărate posibilităţi de a ne ajuta, fie cu corecturi aduse cărţii,
 fie tutelând, fie devenind co-autor, fie cu donaţii. Citeşte
 [cum să contribui](docs/contribute.md) pentru detalii.
+
+Pentru clauzele legale, vezi [licenţa](https://raw.github.com/OriginalCopy/yap-phpro-book/384cff5d2047b246415efdbce93a49e2f0f39823/LICENSE.txt)
