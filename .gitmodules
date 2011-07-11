@@ -52,3 +52,6 @@
 [submodule "solutii/Shumi"]
 	path = solutii/Shumi
 	url = git@gist.github.com:2fe53286f08a4c21e67d.git
+[submodule "solutii/eSerbanescu"]
+	path = solutii/eSerbanescu
+	url = git@gist.github.com:e2586ae7f8e661e14164.git
