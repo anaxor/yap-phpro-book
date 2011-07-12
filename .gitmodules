@@ -61,3 +61,6 @@
 [submodule "solutii/misterjinx"]
 	path = solutii/misterjinx
 	url = git://gist.github.com/1076727.git
+[submodule "solutii/AlexandruM"]
+	path = solutii/AlexandruM
+	url = git://gist.github.com/1078746.git
