@@ -67,3 +67,6 @@
 [submodule "solutii/andrici_cezar"]
 	path = solutii/andrici_cezar
 	url = git@gist.github.com:24ca7b09eb781030b8f8.git
+[submodule "solutii/nitro99"]
+	path = solutii/nitro99
+	url = git://gist.github.com/1101322.git
